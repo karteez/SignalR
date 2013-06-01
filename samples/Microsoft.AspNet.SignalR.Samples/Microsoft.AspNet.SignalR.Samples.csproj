@@ -168,8 +168,8 @@
     <Content Include="Hubs\MouseTracking\images\wand.png" />
     <Content Include="Hubs\MouseTracking\MouseTracking.css" />
     <Content Include="Hubs\MouseTracking\MouseTracking.js" />
-    <Content Include="Hubs\MultipleConnections\cons.js" />
-    <Content Include="Hubs\MultipleConnections\Default.aspx" />
+    <Content Include="Hubs\SimultaneousConnections\SimultaneousConnections.js" />
+    <Content Include="Hubs\SimultaneousConnections\Default.aspx" />
     <Content Include="Hubs\RealtimeBroadcast\index.html" />
     <Content Include="Hubs\RealtimeBroadcast\Realtime.css" />
     <Content Include="Hubs\RealtimeBroadcast\Realtime.js" />
@@ -326,11 +326,11 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hubs\MouseTracking\MouseTracking.cs" />
-    <Compile Include="Hubs\MultipleConnections\Default.aspx.cs">
+    <Compile Include="Hubs\SimultaneousConnections\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Hubs\MultipleConnections\Default.aspx.designer.cs">
+    <Compile Include="Hubs\SimultaneousConnections\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hubs\RealtimeBroadcast\HighFrequencyTimer.cs" />
