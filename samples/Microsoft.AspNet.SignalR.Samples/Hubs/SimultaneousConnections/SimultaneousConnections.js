@@ -58,6 +58,8 @@ $(function () {
                     }
                 }
 
+                $("#connectionState" + id).text(" " + newState);
+
                 $("<li/>").html("connection" + id + " " + oldState + " => " + newState + " " + connection.id)
                           .appendTo(messages);
             });
@@ -73,6 +75,7 @@ $(function () {
             $("#connections").append(" <input type='text' id=" + "msg" + i + " value=" + i + i + i + " style='margin-bottom: 0' />");
             $("#connections").append("<input type='button' id=" + "broadcast" + i + " class='btn' value='Broadcast' />");
             $("#connections").append("<button id=" + "stopStart" + i + " class='btn' disabled='disabled'><span>Stop Connection" + i + "</span></button>");
+            $("#connections").append("<label id=connectionState" + i + " style='display: inline' </label>");
             $("#connections").append("<label id=connection" + i + " style='display: inline' </label>");
             $("#connections").append("<br/><b>The latest message received: </b><label id=connectionMsg" + i + " style='display: inline' </label>");
 
@@ -81,34 +84,40 @@ $(function () {
             myHub = connection.createHubProxy('hubConnectionAPI');
 
             start = function (j) {
+                var startConnection;
+
                 connections[j].myHub.on('displayMessage', function (value) {
                     $("<li/>").html("connection" + j + " " + value).appendTo(messages);
 
                     $("#connectionMsg" + j).text(value);
                 });
 
-                connections[j].connection.start({ transport: activeTransport, jsonp: isJsonp })
-                    .done(function () {
-                        $("#connection" + j).text(" " + connections[j].connection.id + " " + connections[j].connection.transport.name);
+                $("#stopStart" + j).click(function () {
+                    var $el = $("#stopStart" + j);
 
-                        $("#stopStart" + j).val("Stop Connection").prop("disabled", false);
+                    $el.prop("disabled", true);
 
-                        $("#broadcast" + j).click(function () {
-                            connections[j].myHub.invoke("displayMessageAll", $("#msg" + j).val());
+                    if ($.trim($el.find("span").text()) === "Stop Connection" + j) {
+                        connections[j].connection.stop();
+                    } else {
+                        startConnection();
+                    }
+                });
+
+                $("#broadcast" + j).click(function () {
+                    connections[j].myHub.invoke("displayMessageAll", $("#msg" + j).val());
+                });
+
+                startConnection = function () {
+                    connections[j].connection.start({ transport: activeTransport, jsonp: isJsonp })
+                        .done(function () {
+                            $("#connection" + j).text(" " + connections[j].connection.id + " " + connections[j].connection.transport.name);
+
+                            $("#stopStart" + j).prop("disabled", false).find("span").text("Stop Connection" + j);
                         });
+                };
 
-                        $("#stopStart" + j).click(function () {
-                            var $el = $("#stopStart" + j);
-
-                            $el.prop("disabled", true);
-
-                            if ($.trim($el.find("span").text()) === "Stop Connection" + j) {
-                                connections[j].connection.stop();
-                            } else {
-                                connections[j].start(j);
-                            }
-                        });
-                    });
+                startConnection();
             };
 
             connections.push({ "number": i, "connection": connection, "myHub": myHub, "start": start });

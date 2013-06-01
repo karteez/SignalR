@@ -1,4 +1,4 @@
-﻿<%@ Page Title="ASP.NET SignalR: Simultaneous Hub Connections Demo" Language="C#" MasterPageFile="~/SignalR.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Microsoft.AspNet.SignalR.Samples.Hubs.MultipleConnections.Default" %>
+﻿<%@ Page Title="ASP.NET SignalR: Simultaneous Hub Connections Demo" Language="C#" MasterPageFile="~/SignalR.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Microsoft.AspNet.SignalR.Samples.Hubs.SimultaneousConnections.Default" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -9,7 +9,7 @@
 
     <div class="page-header">
         <h2>Simultaneous Hub Connections </h2>
-        <p>Demonstrates simultaneous Hub connections, you can click button to add new connection as well as you can also using queryString e.g. ?cons=3 to specify number of connections by default to run.</p>
+        <p>Demonstrates simultaneous Hub connections, you can click button to add new connection as well as you can also use queryString e.g. ?cons=3 to specify number of connections by default to run.</p>
     </div>
 
     <p>

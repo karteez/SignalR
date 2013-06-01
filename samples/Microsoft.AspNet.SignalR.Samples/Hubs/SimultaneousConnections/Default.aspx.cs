@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Microsoft.AspNet.SignalR.Samples.Hubs.MultipleConnections
+namespace Microsoft.AspNet.SignalR.Samples.Hubs.SimultaneousConnections
 {
     public partial class Default : System.Web.UI.Page
     {

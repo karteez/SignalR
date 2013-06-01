@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.AspNet.SignalR.Samples.Hubs.MultipleConnections {
+namespace Microsoft.AspNet.SignalR.Samples.Hubs.SimultaneousConnections {
     
     
     public partial class Default {
